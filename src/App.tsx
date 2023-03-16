@@ -4,11 +4,18 @@ import {
   Box, Flex, Heading, Image, Input, InputGroup, InputRightElement, Text,
 } from '@chakra-ui/react';
 import { BsPersonCheck, BsStar, BsCheckCircle } from 'react-icons/bs';
+import { useState } from 'react';
 import Logo from './assets/logo.gif';
 import image from './assets/image 1.png';
 import { CardInfo } from './components/CardInfo';
+import { useSearchAnime } from './queries/useSearchAnime';
 
 function App() {
+  const [animeName, setAnimeName] = useState('');
+  console.log(animeName);
+  
+  const { data } = useSearchAnime(animeName);
+  console.log(data);
   return (
     <Box>
       <Flex
@@ -27,12 +34,14 @@ function App() {
             children={<SearchIcon color="gray.800" />}
           />
           <Input
+            onChange={() => setAnimeName}
             type="text"
             placeholder="search for anime..."
             borderRadius="20px"
             _placeholder={{ opacity: 0.7, color: 'gray.500' }}
             focusBorderColor="transparent"
            />
+          
         </InputGroup>
       </Flex>
       

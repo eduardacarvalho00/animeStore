@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import { SearchIcon } from '@chakra-ui/icons';
 import {
-  Box, Flex, Image, Input, InputGroup, InputRightElement,
+  Box, Center, Flex, Image, Input, InputGroup, InputRightElement, Text,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import Logo from './assets/logo.gif';
@@ -30,7 +30,6 @@ function App() {
     setAnimeName(text);
   };  
   const { data } = useSearchAnime(animeName);
-  console.log(data);
   
   return (
     <Box>
@@ -61,23 +60,27 @@ function App() {
           
         </InputGroup>
       </Flex>
-      {data?.data.map((anime) => (
-        <CardAnimes
-          key={anime.id}
-          nameAnime={anime.attributes.canonicalTitle}
-          description={anime.attributes.description}
-          imageURL={anime.attributes.posterImage.large}
-          age={anime.attributes.ageRatingGuide}
-          nameAnimeJP={anime.attributes.titles.ja_jp} 
-          status={anime.attributes.status}
-          rating={anime.attributes.averageRating}
-          showType={anime.attributes.showType}
-          dataEnd={anime.attributes.endDate}
-          dataStart={anime.attributes.startDate}
-          bgImageURL={anime.attributes.coverImage?.tiny}
-        />
-      ))}
-      
+     
+      {data?.data.length === 0 
+        ? <Center w="100vw" h="70vh">
+            <Text as="b" fontSize={30} color="blue.800">What about starting by researching an anime?</Text>
+          </Center> 
+        : data?.data.map((anime) => (
+         <CardAnimes
+           key={anime.id}
+           nameAnime={anime.attributes.canonicalTitle}
+           description={anime.attributes.description}
+           imageURL={anime.attributes.posterImage.large}
+           age={anime.attributes.ageRatingGuide}
+           nameAnimeJP={anime.attributes.titles.ja_jp} 
+           status={anime.attributes.status}
+           rating={anime.attributes.averageRating}
+           showType={anime.attributes.showType}
+           dataEnd={anime.attributes.endDate}
+           dataStart={anime.attributes.startDate}
+           bgImageURL={anime.attributes.coverImage?.tiny}
+          />
+        ))}
     </Box>
   );
 }

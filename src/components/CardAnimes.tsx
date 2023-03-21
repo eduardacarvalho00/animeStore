@@ -1,5 +1,5 @@
 import {
-  Flex, Heading, Box, Text, Image, Divider,
+  Flex, Heading, Box, Text, Image, Center,
 } from '@chakra-ui/react';
 import { BsPersonCheck, BsStar, BsCheckCircle } from 'react-icons/bs';
 import { MotionBox } from '../styles/animation';
@@ -83,7 +83,7 @@ export function CardAnimes({
         <CardInfo text={`${rating} / 100`} icon={BsStar} />
         <CardInfo text={status} icon={BsCheckCircle} />         
       </Flex>
-      <Divider bg="gray.500" />
+      <Center bg="gray.500" h="1px" w="90vw" />
     </Flex>
   );
 }

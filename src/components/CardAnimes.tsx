@@ -2,6 +2,7 @@ import {
   Flex, Heading, Box, Text, Image, Divider,
 } from '@chakra-ui/react';
 import { BsPersonCheck, BsStar, BsCheckCircle } from 'react-icons/bs';
+import { MotionBox } from '../styles/animation';
 import { CardInfo } from './CardInfo';
 
 interface CardAnimesProps {
@@ -36,7 +37,10 @@ export function CardAnimes({
       </Text>
       <Flex direction={['column', 'row']} mt={[0, '30px']} alignItems="center">
         <Box>
-          <Image src={imageURL} w={['230px', '400px']} />
+          <MotionBox whileHover={{ scale: 1.1 }}>
+            <Image src={imageURL} w={['230px', '400px']} />
+          </MotionBox>
+         
           <Text
             color="green.500"
             fontSize={[14, 16]}

@@ -2,7 +2,7 @@ import { Flex, Text, Icon } from '@chakra-ui/react';
 
 interface CardInfoProps{
   icon: any;
-  text: string;
+  text: string | number;
 }
 
 export function CardInfo({ icon, text }: CardInfoProps) {

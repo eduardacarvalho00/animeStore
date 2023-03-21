@@ -8,22 +8,6 @@ import Logo from './assets/logo.gif';
 import { useSearchAnime } from './queries/useSearchAnime';
 import { CardAnimes } from './components/CardAnimes';
 
-interface CardAnimes{
-  id: number;
-  attributes:{
-    canonicalTitle: string;
-    ageRatingGuide: string;
-    description: string;
-    endDate: string;
-    startDate: string;
-    showType: string;
-    status: string;
-    titles:{
-      ja_jp: string;
-    }
-  }
-}
-
 function App() {
   const [animeName, setAnimeName] = useState('');
   const onChangeInput = (text: string) => {
@@ -62,8 +46,8 @@ function App() {
       </Flex>
      
       {data?.data.length === 0 
-        ? <Center w="100vw" h="70vh">
-            <Text as="b" fontSize={30} color="blue.800">What about starting by researching an anime?</Text>
+        ? <Center w="auto" h={['50vh', '70vh']}>
+            <Text p="10px" as="b" fontSize={[20, 30]} textAlign="center" color="blue.800">What about starting by researching an anime?</Text>
           </Center> 
         : data?.data.map((anime) => (
          <CardAnimes

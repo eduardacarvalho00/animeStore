@@ -34,6 +34,7 @@ function App() {
           />
           <Input
             value={animeName}
+            bg="gray.100"
             onChange={(event) => onChangeInput(event.target.value)}
             type="text"
             placeholder="search for anime..."
